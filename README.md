@@ -14,7 +14,7 @@
 - **퍼미션 요청:** 앱은 사진 촬영 및 업로드를 위해 카메라와 저장소 접근 권한을 사용자에게 요청합니다.
 - **아이콘 설정:** 애플리케이션의 아이콘은 사용자에게 앱의 목적과 정체성을 전달하는 중요한 요소입니다. PhotoShareWebViewApp은 직관적인 사용자 경험을 위해 맞춤형 아이콘을 사용합니다.
 - **스플래쉬 화면 구성:** 사용자가 앱을 시작할 때 첫 인상을 결정하는 스플래쉬 화면을 제공합니다. 이는 앱 로딩 시간을 사용자에게 보다 즐거운 경험으로 전환시킵니다.
-- **환경변수 사용:** 외부 노출 방지를 위해 은밀한 정보는 local.properties에 따로 관리 합니다. [참고](:https://tae-hui.tistory.com/entry/Android-Studio-localproperties-%ED%99%9C%EC%9A%A9-%EB%B0%A9%EB%B2%95)
+- **환경변수 사용:** 외부 노출 방지를 위해 은밀한 정보는 local.properties에 따로 관리 합니다. [참고](https://tae-hui.tistory.com/entry/Android-Studio-localproperties-%ED%99%9C%EC%9A%A9-%EB%B0%A9%EB%B2%95)
 
 ## 스크린샷
 
