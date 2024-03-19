@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.application'
+
+}
+
+android {
+    namespace = "com.taehui.appearance_man"
+    compileSdk = 34
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    defaultConfig {
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 5
+        versionName = "5.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // local.properties 파일 로드
+        def localPropertiesFile = rootProject.file('local.properties')
+        if (localPropertiesFile.exists()) {
+            Properties properties = new Properties()
+            properties.load(new FileInputStream(localPropertiesFile))
+
+            // local.properties에서 APP_AUTHORITY 값 읽기
+            String appAuthority = properties.getProperty('APP_AUTHORITY') + ".provider"
+            String webUrl = properties.getProperty('WEB_URL')
+            String adsValue = properties.getProperty('ADS_VALUE')
+
+            // 읽은 값 buildConfigField로 추가
+            buildConfigField 'String', 'APP_AUTHORITY', "\"$appAuthority\""
+            buildConfigField 'String', 'WEB_URL', "\"$webUrl\""
+            buildConfigField 'String', 'ADS_VALUE', "\"$adsValue\""
+
+            // 리소스 문자열로 추가 (AndroidManifest.xml에서 사용)
+            resValue 'string', 'app_authority', appAuthority
+            resValue 'string', 'web_url', webUrl
+            resValue 'string', 'ads_value', adsValue
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+
+    implementation 'com.google.android.gms:play-services-ads:22.3.0'
+
+}
